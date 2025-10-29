@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JobsBySkills — Crear cuenta</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="data:," />
+</head>
+
+<body>
+    <main class="shell">
+        <!-- blobs decorativos -->
+        <div class="blob blob-a" aria-hidden="true"></div>
+        <div class="blob blob-b" aria-hidden="true"></div>
+
+        <section class="card" role="region" aria-labelledby="signup-title">
+            <header class="brand">
+                <!-- mismo logomark del sign in -->
+                <svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <defs>
+                        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="var(--brand-1)" />
+                            <stop offset="1" stop-color="var(--brand-2)" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="6" y="6" width="52" height="52" rx="12" fill="url(#g2)" />
+                    <path d="M20 40l8-12 6 8 10-16" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <div>
+                    <h1 id="signup-title" class="title">Crea tu cuenta</h1>
+                    <p class="subtitle">Únete a JobsBySkills y encuentra empleos por tus habilidades</p>
+                </div>
+            </header>
+
+            <form class="form" id="signup-form" action="#" method="post" novalidate aria-describedby="form-hint">
+                <p id="form-hint" class="muted">Completa tus datos para comenzar.</p>
+
+                <!-- Nombre y Apellidos -->
+                <div class="field">
+                    <label for="firstname">Nombre</label>
+                    <input id="firstname" name="firstname" type="text" autocomplete="given-name" placeholder="Julio"
+                        required />
+                    <small class="msg" aria-live="polite"></small>
+                </div>
+
+                <div class="field">
+                    <label for="lastname">Apellidos</label>
+                    <input id="lastname" name="lastname" type="text" autocomplete="family-name"
+                        placeholder="Quirós Matarrita" required />
+                    <small class="msg" aria-live="polite"></small>
+                </div>
+
+                <!-- Email -->
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" inputmode="email" autocomplete="email"
+                        placeholder="you@example.com" required />
+                    <small class="msg" aria-live="polite"></small>
+                </div>
+
+                <!-- Rol -->
+                <div class="field">
+                    <label for="role">Rol</label>
+                    <select id="role" name="role" required>
+                        <option value="">Selecciona tu rol</option>
+                        <option value="candidate">Candidato</option>
+                        <option value="employer">Empleador</option>
+                    </select>
+                    <small class="msg" aria-live="polite"></small>
+                </div>
+
+                <!-- Ubicación / Modalidad preferida -->
+                <div class="field">
+                    <label for="location">Ubicación (Ciudad / País)</label>
+                    <input id="location" name="location" type="text" autocomplete="address-level2"
+                        placeholder="San José, Costa Rica" />
+                    <small class="msg" aria-live="polite"></small>
+                </div>
+
+                <div class="field">
+                    <label for="workmode">Modalidad preferida</label>
+                    <select id="workmode" name="workmode">
+                        <option value="">Selecciona una opción</option>
+                        <option value="remote">Remoto</option>
+                        <option value="hybrid">Híbrido</option>
+                        <option value="onsite">Presencial</option>
+                    </select>
+                    <small class="msg" aria-live="polite"></small>
+                </div>
+
+                <!-- Password -->
+                <div class="field">
+                    <label for="password">Contraseña</label>
+                    <div class="password-wrap">
+                        <input id="password" name="password" type="password" autocomplete="new-password"
+                            placeholder="••••••••" minlength="8" required />
+                        <button type="button" class="peek" aria-label="Mostrar contraseña" title="Mostrar contraseña">
+                            <svg viewBox="0 0 24 24" class="icon">
+                                <path
+                                    d="M12 5c5 0 9 5 9 7s-4 7-9 7-9-5-9-7 4-7 9-7Zm0 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="strength" aria-hidden="true">
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span><span
+                            class="bar"></span>
+                    </div>
+                    <small class="muted">Mínimo 8 caracteres, mezcla mayúsculas, números y símbolos.</small>
+                    <small class="msg" aria-live="polite"></small>
+                </div>
+
+                <div class="field">
+                    <label for="confirm">Confirmar contraseña</label>
+                    <div class="password-wrap">
+                        <input id="confirm" name="confirm" type="password" autocomplete="new-password"
+                            placeholder="••••••••" minlength="8" required />
+                        <button type="button" class="peek" data-target="confirm" aria-label="Mostrar contraseña"
+                            title="Mostrar contraseña">
+                            <svg viewBox="0 0 24 24" class="icon">
+                                <path
+                                    d="M12 5c5 0 9 5 9 7s-4 7-9 7-9-5-9-7 4-7 9-7Zm0 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <small class="msg" aria-live="polite"></small>
+                </div>
+
+                <!-- Términos -->
+                <div class="extras">
+                    <label class="check">
+                        <input type="checkbox" id="terms" name="terms" required />
+                        <span>Acepto los <a class="link" href="#" target="_blank" rel="noopener">Términos y
+                                Condiciones</a></span>
+                    </label>
+                    <span class="muted">¿Ya tienes cuenta? <a class="link" href="signin.html">Inicia sesión</a></span>
+                </div>
+
+                <button class="cta" type="submit">Crear cuenta</button>
+
+                <div class="or"><span>o</span></div>
+
+                <!-- Providers iguales al Sign In (ya corregidos) -->
+                <div class="providers">
+                    <button class="btn provider btn--google" type="button" aria-label="Registrarse con Google">
+                        <svg class="provider-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M21.6 12.23c0-.8-.07-1.39-.22-2h-9.18v3.64h5.43c-.11.9-.72 2.26-2.06 3.18l-.02.14 2.99 2.32.21.02c1.93-1.78 3.05-4.4 3.05-7.3z"
+                                fill="#4285F4" />
+                            <path
+                                d="M12.2 22c2.75 0 5.06-.9 6.74-2.45l-3.21-2.49c-.86.6-2.02 1.02-3.53 1.02-2.7 0-4.99-1.82-5.81-4.28l-.12.01-3.14 2.43-.04.12C3.9 19.63 7.77 22 12.2 22z"
+                                fill="#34A853" />
+                            <path
+                                d="M6.39 13.8c-.2-.6-.31-1.25-.31-1.9 0-.66.11-1.3.29-1.9l-.01-.13-3.18-2.47-.1.05C2.47 8.73 2.1 10.33 2.1 11.9c0 1.56.37 3.16.98 4.44l3.31-2.54z"
+                                fill="#FBBC05" />
+                            <path
+                                d="M12.2 6.9c1.91 0 3.21.83 3.95 1.52l2.88-2.82C17.24 3.9 14.96 3 12.2 3 7.77 3 3.9 5.37 2.08 9.07l3.31 2.54c.82-2.46 3.11-4.7 6.81-4.7z"
+                                fill="#EA4335" />
+                        </svg>
+                        Continuar con Google
+                    </button>
+
+                    <button class="btn provider btn--linkedin" type="button" aria-label="Registrarse con LinkedIn">
+                        <svg class="provider-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="#0A66C2"
+                                d="M20.45 20.45h-3.56v-5.59c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.69H9.31V9.5h3.41v1.49h.05c.47-.89 1.61-1.83 3.32-1.83 3.55 0 4.21 2.34 4.21 5.38v5.9zM5.34 8.01a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9.5h3.56v10.95z" />
+                        </svg>
+                        Continuar con LinkedIn
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Mostrar/ocultar contraseñas
+        const mainPwd = document.getElementById('password');
+        const confirmPwd = document.getElementById('confirm');
+
+        document.querySelectorAll('.peek').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.dataset.target || 'password';
+                const input = document.getElementById(targetId);
+                const showing = input.type === 'text';
+                input.type = showing ? 'password' : 'text';
+                btn.setAttribute('aria-label', showing ? 'Mostrar contraseña' : 'Ocultar contraseña');
+                btn.title = showing ? 'Mostrar contraseña' : 'Ocultar contraseña';
+            });
+        });
+
+        // Medidor simple de fortaleza
+        const strengthBars = document.querySelectorAll('.strength .bar');
+        function strengthScore(p) {
+            let s = 0;
+            if (p.length >= 8) s++;
+            if (/[A-Z]/.test(p)) s++;
+            if (/[0-9]/.test(p)) s++;
+            if (/[^A-Za-z0-9]/.test(p)) s++;
+            return s; // 0..4
+        }
+        mainPwd.addEventListener('input', () => {
+            const score = strengthScore(mainPwd.value);
+            strengthBars.forEach((b, i) => {
+                b.classList.toggle('on', i < score);
+            });
+        });
+
+        // Validación básica del formulario
+        const form = document.getElementById('signup-form');
+        form.addEventListener('submit', (e) => {
+            let ok = true;
+
+            // limpieza mensajes
+            form.querySelectorAll('.field').forEach(f => {
+                f.classList.remove('invalid');
+                const msg = f.querySelector('.msg'); if (msg) msg.textContent = '';
+            });
+
+            // password match
+            if (mainPwd.value !== confirmPwd.value) {
+                ok = false;
+                const f = confirmPwd.closest('.field');
+                f.classList.add('invalid');
+                f.querySelector('.msg').textContent = 'Las contraseñas no coinciden.';
+            }
+
+            // HTML5 validity
+            form.querySelectorAll('input, select').forEach(el => {
+                if (!el.checkValidity()) {
+                    ok = false;
+                    const f = el.closest('.field');
+                    f?.classList.add('invalid');
+                    const msg = f?.querySelector('.msg');
+                    if (msg && el.validationMessage) msg.textContent = el.validationMessage;
+                }
+            });
+
+            if (!ok) e.preventDefault();
+        });
+
+        // limpiar error on input
+        form.querySelectorAll('input, select').forEach(el => {
+            el.addEventListener('input', () => {
+                const f = el.closest('.field');
+                const msg = f?.querySelector('.msg');
+                if (el.checkValidity()) {
+                    f?.classList.remove('invalid');
+                    if (msg) msg.textContent = '';
+                }
+            });
+            el.addEventListener('change', () => {
+                const f = el.closest('.field');
+                const msg = f?.querySelector('.msg');
+                if (el.checkValidity()) {
+                    f?.classList.remove('invalid');
+                    if (msg) msg.textContent = '';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

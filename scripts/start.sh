@@ -3,22 +3,25 @@
 if ! command -v docker &> /dev/null
 then
     echo "[ERROR] Docker no encontrado. Es necesario instalar Docker."
+    read -p "Presione Enter para continuar..."
     exit 1
 fi
 
-if ! command -v docker-compose &> /dev/null
+if ! command -v docker compose &> /dev/null
 then
-    echo "[ERROR] docker-compose no encontrado. Es necesario reinstalar Docker."
+    echo "[ERROR] docker compose no encontrado. Es necesario reinstalar Docker."
+    read -p "Presione Enter para continuar..."
     exit 1
 fi
 
 if ! docker ps &> /dev/null
 then
     echo "[ERROR] El motor de Docker no esta en ejecucion. Es necesario iniciar Docker."
+    read -p "Presione Enter para continuar..."
     exit 1
 fi
 
-if docker-compose ps 2>/dev/null | grep -q "Up"; then
+if docker compose ps 2>/dev/null | grep -q "Up"; then
     clear
     echo "Servidor esta en ejecucion en: http://localhost:3000"
     echo
@@ -30,12 +33,12 @@ if docker-compose ps 2>/dev/null | grep -q "Up"; then
     echo
 
     if [ "$option" = "1" ]; then
-        docker-compose logs -f
+        docker compose logs -f
     elif [ "$option" = "2" ]; then
-        docker-compose restart jobsbyskills
-        docker-compose logs -f
+        docker compose restart jobsbyskills
+        docker compose logs -f
     elif [ "$option" = "3" ]; then
-        docker-compose down -v --remove-orphans
+        docker compose down -v --remove-orphans
     else
         clear
         echo -e "\033[31mOpcion invalida\033[0m"
@@ -44,7 +47,7 @@ if docker-compose ps 2>/dev/null | grep -q "Up"; then
     fi
 else
     echo "Limpiando sesion..."
-    docker-compose down -v --remove-orphans > /dev/null 2>&1
+    docker compose down -v --remove-orphans > /dev/null 2>&1
 
     select_db_script() {
         clear
@@ -65,6 +68,7 @@ else
 
         if [ ${#options[@]} -eq 0 ]; then
             echo "No se encontraron scripts SQL."
+            read -p "Presione Enter para continuar..."
             exit 1
         fi
 
@@ -100,8 +104,9 @@ else
     select_db_script
 
     echo "Iniciando servicios..."
-    docker-compose up --build
+    docker compose up --build
 fi
 
 echo ""
 echo "Proceso finalizado."
+read -p "Presione Enter para continuar..."

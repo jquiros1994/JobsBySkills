@@ -4,34 +4,37 @@ setlocal enabledelayedexpansion
 docker --version >nul 2>nul
 if %errorlevel% neq 0 (
     echo [ERROR] Docker no encontrado. Es necesario instalar Docker Desktop.
+    pause
     exit /b 1
 )
 
-docker-compose --version >nul 2>nul
+docker compose --version >nul 2>nul
 if %errorlevel% neq 0 (
-    echo [ERROR] docker-compose no encontrado. Es necesario reinstalar Docker Desktop.
+    echo [ERROR] docker compose no encontrado. Es necesario reinstalar Docker Desktop.
+    pause
     exit /b 1
 )
 
 docker ps >nul 2>nul
 if %errorlevel% neq 0 (
     echo [ERROR] El motor de Docker no esta en ejecucion. Es necesario iniciar Docker Desktop.
+    pause
     exit /b 1
 )
 
-for /f "tokens=*" %%i in ('docker-compose ps ^| findstr "Up" 2^>nul') do (
+for /f "tokens=*" %%i in ('docker compose ps ^| findstr "Up" 2^>nul') do (
     set "is_running=1"
     goto :run_serv
 )
 
 :continue
     echo Limpiando sesion...
-    docker-compose down -v --remove-orphans >nul 2>&1
+    docker compose down -v --remove-orphans >nul 2>&1
     goto :select_db_script
 
 :run_compose
     echo Iniciando servicios...
-    docker-compose up --build
+    docker compose up --build
     goto :end
 
 :select_db_script
@@ -61,6 +64,7 @@ for /f "tokens=*" %%i in ('docker-compose ps ^| findstr "Up" 2^>nul') do (
 
     if %count% equ 0 (
         echo No se encontraron scripts SQL.
+        pause
         exit /b 1
     )
 
@@ -99,12 +103,12 @@ echo.
 set /p option=Seleccione una opcion (1, 2 o 3): 
 
 if "!option!"=="1" (
-    docker-compose logs -f
+    docker compose logs -f
 ) else if "!option!"=="2" (
-    docker-compose restart jobsbyskills
-    docker-compose logs -f
+    docker compose restart jobsbyskills
+    docker compose logs -f
 ) else if "!option!"=="3" (
-    docker-compose down -v --remove-orphans
+    docker compose down -v --remove-orphans
 ) else (
     cls
     powershell write-host "Opcion invalida" -ForegroundColor Red
@@ -113,3 +117,4 @@ if "!option!"=="1" (
 
 :end
 echo Proceso finalizado.
+pause

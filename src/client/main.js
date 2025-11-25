@@ -1,5 +1,13 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import './assets/style.css';
+import authStore from './store/authStore';
 
-createApp(App).mount('#app')
+authStore.methods.initializeStore();
+
+const app = createApp(App);
+
+app.use(router);
+
+app.mount('#app');
